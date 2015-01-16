@@ -1,0 +1,30 @@
+# Maintainer: s8321414 <s8321414 at gmail.com>
+# Arch Linux maintainers and contributors:
+# Maintainer: Jerome Leclanche <jerome@leclan.ch>
+# Contributor: Matthew Stobbs <matthew@stobbstechnical.com>
+
+pkgname=lxqt-admin
+pkgver=0.8.0
+pkgrel=1
+pkgdesc="LXQt system administration"
+arch=("i686" "x86_64" "armv6h")
+url="http://lxqt.org"
+license=("GPL2")
+depends=("liblxqt" "liboobs")
+makedepends=("cmake")
+source=($url/downloads/lxqt/${pkgver}/${pkgname}-${pkgver}.tar.xz)
+sha256sums=('f2c17f9a9f3628db53b6cfeee64de8500b35b13c37bc4bc8d12302f856362a8e')
+
+build() {
+	cd "${srcdir}/${pkgname}-${pkgver}"
+	mkdir -p build
+	cd build
+	cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR:PATH=/usr/lib -DLIB_INSTALL_DIR:PATH=/usr/lib -DUSE_QT5=true ..
+	make
+}
+
+package() {
+	cd "${srcdir}/${pkgname}-${pkgver}"
+	cd build
+	make DESTDIR="${pkgdir}" install
+}

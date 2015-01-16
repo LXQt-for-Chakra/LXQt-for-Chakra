@@ -1,0 +1,32 @@
+# Maintainer: s8321414 <s8321414 at gmail.com>
+# Arch Linux maintainers and contributors:
+# Maintainer: Jerome Leclanche <jerome@leclan.ch>
+
+pkgname=lximage-qt
+pkgver=0.3.0
+pkgrel=1
+pkgdesc="The LXQt image viewer"
+arch=('x86_64')
+url="http://lxqt.org"
+license=('GPL')
+conflicts=('lximage-qt-git')
+replace=('lximage-qt-git')
+depends=('pcmanfm-qt')
+makedepends=("cmake" "qt5-x11extras")
+source=($url/downloads/${pkgname}/${pkgver}/${pkgname}-${pkgver}.tar.xz)
+install=${pkgname}.install
+md5sums=('6ebd303f268fcef069e6f340583669be')
+
+build() {
+	cd "${srcdir}/${pkgname}-${pkgver}"
+	mkdir -p build
+	cd build
+	cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR:PATH=/usr/lib -DLIB_INSTALL_DIR:PATH=/usr/lib -DUSE_QT5=true ..
+	make
+}
+
+package() {
+	cd "${srcdir}/${pkgname}-${pkgver}"
+	cd build
+	make DESTDIR="${pkgdir}" install
+}

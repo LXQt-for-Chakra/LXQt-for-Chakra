@@ -1,0 +1,32 @@
+# Maintainer: s8321414 <s8321414 at gmail.com>
+# Arch Linux maintainers and contributors:
+# Maintainer: Jerome Leclanche <jerome@leclan.ch>
+
+pkgname=pcmanfm-qt
+pkgver=0.8.0
+pkgrel=2
+pkgdesc="The LXQt file manager, Qt port of PCManFM."
+arch=('x86_64')
+url="http://lxqt.org"
+license=('LGPL2.1')
+conflicts=('pcmanfm-qt-git')
+replace=('pcmanfm-qt-git')
+depends=("liblxqt" "libfm" "lxmenu-data" "gvfs-mtp")
+makedepends=('cmake')
+source=($url/downloads/lxqt/${pkgver}/${pkgname}-${pkgver}.tar.xz)
+install=${pkgname}.install
+sha256sums=('63672fdf819d8a2c60b3ab21841a830702624d33565352af2850ef7cba9b5f16')
+
+build() {
+	cd "${srcdir}/${pkgname}-${pkgver}"
+	mkdir -p build
+	cd build
+	cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR:PATH=/usr/lib -DLIB_INSTALL_DIR:PATH=/usr/lib -DUSE_QT5=true ..
+	make
+}
+
+package() {
+	cd "${srcdir}/${pkgname}-${pkgver}"
+	cd build
+	make DESTDIR="${pkgdir}" install
+}

@@ -1,0 +1,30 @@
+# Maintainer: s8321414 <s8321414 at gmail.com>
+# Arch Linux maintainers and contributors:
+# Contributor: Antonio Rojas
+
+pkgname=lxqt
+pkgver=0.8.0
+pkgrel=5
+pkgdesc="Metapackage to install a full LXQt desktop"
+arch=('any')
+url='http://lxqt.org/'
+license=('LGPL')
+groups=('lxqt')
+depends=('menu-cache' 'libfm' 'pcmanfm-qt' 'liblxqt' 'liblxqt-mount' 'lximage-qt' 'lxqt-about' 'lxqt-admin'
+         'lxqt-config' 'lxqt-common' 'lxqt-globalkeys' 'lxqt-notificationd' 'lxqt-openssh-askpass' 'lxqt-panel' 
+         'lxqt-policykit' 'lxqt-powermanagement' 'lxqt-qtplugin' 'lxqt-runner' 'lxqt-session')
+optdepends=('openbox: Official recommend windows manager'
+	    'obconf-qt-git: openbox configuration GUI (git version)'
+	    'juffed: Lightweight text editor, based on Qt4'
+	    'qterminal: Lightweight terminal based on Qt'
+	    'qps: Lightweight system monitor based on Qt')
+source=()
+md5sums=()
+
+build() {
+	msg2 "This is a metapackage. Nothing will be built."
+}
+
+package() {
+	msg2 "This is a metapackage. Nothing will be installed."
+}

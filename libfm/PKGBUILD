@@ -1,0 +1,43 @@
+# Maintainer: s8321414 <s8321414 at gmail.com>
+# Arch Linux maintainers and contributors:
+# Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
+# Contributor: Unknown47 <unknown47r@gmail.com>
+# Contributor: Angel Velasquez <angvp@archlinux.org>
+# Contributor: Juergen Hoetzel <juergen@archlinux.org>
+
+pkgname=libfm
+pkgver=1.2.3
+pkgrel=3
+pkgdesc='Library for file management'
+url='http://pcmanfm.sourceforge.net/'
+arch=('x86_64')
+license=('LGPL')
+depends=('menu-cache' 'desktop-file-utils' 'libexif' 'dbus-glib' 'libfm-extra')
+makedepends=('udisks' 'intltool')
+replaces=('lxshortcut')
+provides=('lxshortcut')
+conflicts=('lxshortcut')
+source=(http://downloads.sourceforge.net/pcmanfm/${pkgname}-${pkgver}.tar.xz)
+md5sums=('3ff38200701658f7e80e25ed395d92dd')
+install=${pkgname}.install
+
+build() {
+  cd ${pkgname}-${pkgver}
+  ./configure --prefix=/usr \
+    --sysconfdir=/etc \
+    --enable-udisks \
+    --with-gnu-ld \
+    --without-gtk
+  make
+}
+
+package() {
+  cd $pkgbase-$pkgver
+  make DESTDIR="$pkgdir" install
+  rm "$pkgdir"/usr/include/libfm/fm-{extra,version,xml-file}.h \
+     "$pkgdir"/usr/lib/libfm-extra.so* \
+     "$pkgdir"/usr/lib/pkgconfig/libfm-extra.pc
+  # Temporary fix for libfm and libfm-extra conflict
+  rm -rf "$pkgdir"/usr/include/libfm
+  mv "$pkgdir"/usr/include/libfm-1.0/ "$pkgdir"/usr/include/libfm
+}

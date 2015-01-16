@@ -1,0 +1,46 @@
+# Maintainer: s8321414 <s8321414 at gmail.com>
+# Arch Linux maintainers and contributors:
+# Maintainer: Jan de Groot <jgc@archlinux.org>
+
+pkgname=('gvfs-mtp')
+_pkgname=('gvfs')
+pkgver=1.22.2
+pkgrel=1
+pkgdesc="A minimal build of gvfs with most backends disabled. Useful to mount your Windows Phone 8.1 through pcmanFM"
+arch=('x86_64')
+license=('LGPL')
+depends=('udisks2' 'libmtp')
+makedepends=('intltool' 'dbus-glib' 'docbook-xsl')
+url="http://www.gnome.org"
+conflicts=('gvfs')
+provides=('gvfs')
+option=(!libtool)
+install=${pkgname}.install
+source=(http://ftp.gnome.org/pub/gnome/sources/$_pkgname/${pkgver:0:4}/$_pkgname-$pkgver.tar.xz)
+sha256sums=('8d08c4927b6c20d990498c23280017e7033b31a386f09b4c3ce5bedd20316250')
+
+build() {
+  cd $srcdir/$_pkgname-$pkgver
+  
+  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --disable-static \
+  --disable-afc --disable-afp --disable-avahi --disable-bluray \
+  --disable-gdu --disable-gphoto2 --disable-hal \
+  --disable-http --disable-keyring --disable-obexftp --disable-samba \
+  --disable-cdda --disable-goa --disable-archive --disable-gtk \
+  --libexecdir=/usr/lib/gvfs --with-bash-completion-dir=/etc/bash_completion.d 
+  make
+}
+
+package() {
+  cd $srcdir/$_pkgname-$pkgver
+  sed -e 's/^am__append_4/#am__append_4/' \
+	  -e 's/^am__append_5/#am__append_5/' \
+	  -i monitor/Makefile
+  make DESTDIR=$pkgdir install
+
+  # Disable network automount
+  sed -i 's/AutoMount=true/AutoMount=false/' $pkgdir/usr/share/gvfs/mounts/network.mount
+
+  # Remove useless GConf dir
+  rm -rf $pkgdir/usr/share/GConf
+}

@@ -1,0 +1,29 @@
+# Maintainer: s8321414 <s8321414 at gmail.com>
+# Arch Linux maintainers and contributors:
+# Maintainer: Jerome Leclanche <jerome@leclan.ch>
+
+pkgname=lxqt-notificationd
+pkgver=0.8.0
+pkgrel=1
+pkgdesc="LXQt notification daemon and library."
+arch=("x86_64")
+url="http://lxqt.org"
+license=("GPL2")
+depends=("lxqt-common" "liblxqt")
+makedepends=("cmake")
+source=($url/downloads/lxqt/${pkgver}/${pkgname}-${pkgver}.tar.xz)
+sha256sums=('720b6cca74ff5c0433b39feb3040cc25cd6fdcbdfe51186cefac7a42e157999b')
+
+build() {
+	cd "${srcdir}/${pkgname}-${pkgver}"
+	mkdir -p build
+	cd build
+	cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR:PATH=/usr/lib -DLIB_INSTALL_DIR:PATH=/usr/lib -DUSE_QT5=true ..
+	make
+}
+
+package() {
+	cd "${srcdir}/${pkgname}-${pkgver}"
+	cd build
+	make DESTDIR="${pkgdir}" install
+}

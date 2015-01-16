@@ -1,0 +1,29 @@
+# Maintainer: s8321414 <s8321414 at gmail.com>
+# Arch Linux maintainers and contributors:
+# Maintainer: Jerome Leclanche <jerome@leclan.ch>
+
+pkgname=lxqt-config
+pkgver=0.8.0
+pkgrel=1
+pkgdesc="LXQt system configuration."
+arch=("x86_64")
+url="http://lxqt.org"
+license=("GPL2")
+depends=("liblxqt" "libxcursor")
+makedepends=("cmake")
+source=($url/downloads/lxqt/${pkgver}/${pkgname}-${pkgver}.tar.xz)
+sha256sums=('d2817df3c890038aca3e9efa2e2319df51825f47fdda5858efd92459bb8f4ad8')
+
+build() {
+	cd "${srcdir}/${pkgname}-${pkgver}"
+	mkdir -p build
+	cd build
+	cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR:PATH=/usr/lib -DLIB_INSTALL_DIR:PATH=/usr/lib -DUSE_QT5=true ..
+	make
+}
+
+package() {
+	cd "${srcdir}/${pkgname}-${pkgver}"
+	cd build
+	make DESTDIR="${pkgdir}" install
+}

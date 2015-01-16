@@ -1,0 +1,34 @@
+# Maintainer: s8321414 <s8321414 at gmail.com>
+# Arch Linux maintainers and contributors:
+# Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
+# Contributor: Unknown47 <unknown47r@gmail.com>
+# Contributor: Angel Velasquez <angvp@archlinux.org>
+# Contributor: Juergen Hoetzel <juergen@archlinux.org>
+
+pkgname=libfm-extra
+pkgver=1.2.3
+pkgrel=3
+pkgdesc='Extra library for file management' 
+url='http://pcmanfm.sourceforge.net/'
+arch=('x86_64')
+license=('LGPL')
+depends=('glib2')
+makedepends=('intltool' 'udisks')
+source=(http://downloads.sourceforge.net/pcmanfm/libfm-${pkgver}.tar.xz)
+md5sums=('3ff38200701658f7e80e25ed395d92dd')
+
+build() {
+  cd ${srcdir}/libfm-${pkgver}
+  ./configure --prefix=/usr \
+    --sysconfdir=/etc \
+    --enable-udisks \
+    --with-gnu-ld \
+    --without-gtk \
+    --with-extra-only
+  make
+}
+
+package() {
+  cd ${srcdir}/libfm-${pkgver}
+  make DESTDIR="${pkgdir}" install
+}

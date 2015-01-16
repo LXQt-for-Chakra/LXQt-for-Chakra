@@ -1,0 +1,29 @@
+# Maintainer: s8321414 <s8321414 at gmail.com>
+# Arch Linux maintainers and contributors:
+# Maintainer: Jerome Leclanche <jerome@leclan.ch>
+
+pkgname=lxqt-globalkeys
+pkgver=0.8.0
+pkgrel=1
+pkgdesc="LXQt daemon and library for global keyboard shortcuts registration."
+arch=("x86_64")
+url="http://lxqt.org"
+license=("GPL2")
+depends=("liblxqt")
+makedepends=("cmake")
+source=("$url/downloads/lxqt/${pkgver}/${pkgname}-${pkgver}.tar.xz")
+sha256sums=('dd15a5d6f5818ddd00a7b3fbde483bbd8ce88d2dfaa4a6e98ca54c7492cbd713')
+
+build() {
+	cd "${srcdir}/${pkgname}-${pkgver}"
+	mkdir -p build
+	cd build
+	cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR:PATH=/usr/lib -DLIB_INSTALL_DIR:PATH=/usr/lib -DUSE_QT5=true ..
+	make
+}
+
+package() {
+	cd "${srcdir}/${pkgname}-${pkgver}"
+	cd build
+	make DESTDIR="${pkgdir}" install
+}

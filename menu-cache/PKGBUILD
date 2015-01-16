@@ -1,0 +1,34 @@
+# Maintainer: s8321414 <s8321414 at gmail.com>
+# Arch Linux maintainers and contributors:
+# Maintainer:  Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
+# Contributor: Angel Velasquez <angvp@archlinux.org>
+# Contributor: Juergen Hoetzel <juergen@archlinux.org>
+
+pkgname=menu-cache
+pkgver=1.0.0
+pkgrel=1
+pkgdesc='Caching mechanism for freedesktop.org compliant menus'
+arch=('x86_64')
+license=('GPL2')
+url='http://lxde.org/'
+depends=('libfm-extra')
+conflicts=('menu-cache-git')
+replace=('menu-cache-git')
+source=(http://downloads.sourceforge.net/lxde/$pkgname/$pkgname-$pkgver.tar.xz)
+md5sums=('4a8e6c1a86d5e64ec725d850a4abfbad')
+
+build() {
+  cd ${pkgname}-${pkgver}
+  ./configure --prefix=/usr --sysconfdir=/etc \
+    --libexecdir=/usr/lib \
+    --disable-static \
+    --without-gtk \
+    --with-gnu-ld
+  make
+}
+
+package() {
+cd ${pkgname}-${pkgver}
+  make DESTDIR="${pkgdir}" install
+}
+
