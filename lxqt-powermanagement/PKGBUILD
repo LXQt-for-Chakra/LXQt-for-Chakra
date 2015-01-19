@@ -9,8 +9,8 @@ pkgdesc="LXQt power management daemon"
 arch=("x86_64")
 url="http://lxqt.org"
 license=("GPL2")
-depends=("liblxqt" "libxcb" "qt5-svg" "upower")
-makedepends=("cmake")
+depends=("liblxqt" "libxcb" "qt5-svg" "upower" "hicolor-icon-theme")
+makedepends=("cmake" "qt5-tools")
 source=($url/downloads/lxqt/${pkgver}/${pkgname}-${pkgver}.tar.xz)
 sha256sums=('eb2605326c0598331e0c84624e319ef574c6dffc73d0bbc21782cb61a468d40c')
 
@@ -18,7 +18,12 @@ build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
 	mkdir -p build
 	cd build
-	cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR:PATH=/usr/lib -DLIB_INSTALL_DIR:PATH=/usr/lib -DUSE_QT5=true ..
+	cmake ../$pkgname-$pkgver \
+	    -DCMAKE_INSTALL_PREFIX=/usr \
+	    -DCMAKE_BUILD_TYPE=Release \
+	    -DCMAKE_INSTALL_LIBDIR:PATH=/usr/lib \
+	    -DLIB_INSTALL_DIR:PATH=/usr/lib \
+	    -DUSE_QT5=true ..
 	make
 }
 
