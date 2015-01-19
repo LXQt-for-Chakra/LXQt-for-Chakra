@@ -10,7 +10,7 @@ arch=("x86_64")
 url="http://lxqt.org"
 license=("GPL2")
 depends=("liblxqt")
-makedepends=("cmake")
+makedepends=("cmake" "qt5-tools")
 source=($url/downloads/lxqt/${pkgver}/${pkgname}-${pkgver}.tar.xz)
 sha256sums=('bab662d167d6b718bfd30122f0c26d786469ed52ec5ae4e6393d6fb9882ff767')
 
@@ -18,7 +18,14 @@ build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
 	mkdir -p build
 	cd build
-	cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR:PATH=/usr/lib -DLIB_INSTALL_DIR:PATH=/usr/lib -DUSE_QT5=true ..
+	cmake ../$pkgname-$pkgver \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_INSTALL_PREFIX=/usr \
+            -DCMAKE_INSTALL_LIBDIR:PATH=/usr/lib \
+            -DLIB_INSTALL_DIR:PATH=/usr/lib \
+            -DLIB_SUFFIX="" \
+	    -DBUNDLE_XDG_UTILS=NO \
+            -DUSE_QT5=true ..
 	make
 }
 
