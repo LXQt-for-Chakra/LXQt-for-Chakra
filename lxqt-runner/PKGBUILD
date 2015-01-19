@@ -18,7 +18,12 @@ build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
 	mkdir -p build
 	cd build
-	cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR:PATH=/usr/lib -DLIB_INSTALL_DIR:PATH=/usr/lib -DUSE_QT5=true ..
+	cmake ../$pkgname-$pkgver \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_INSTALL_PREFIX=/usr \
+            -DCMAKE_INSTALL_LIBDIR:PATH=/usr/lib \
+            -DLIB_INSTALL_DIR:PATH=/usr/lib \
+            -DUSE_QT5=true ..
 	make
 }
 
