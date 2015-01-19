@@ -9,8 +9,8 @@ pkgdesc="LXQt system configuration."
 arch=("x86_64")
 url="http://lxqt.org"
 license=("GPL2")
-depends=("liblxqt" "libxcursor")
-makedepends=("cmake")
+depends=("liblxqt" "libxcursor" "xorg-xrandr")
+makedepends=("cmake" "qt5-tools")
 source=($url/downloads/lxqt/${pkgver}/${pkgname}-${pkgver}.tar.xz)
 sha256sums=('d2817df3c890038aca3e9efa2e2319df51825f47fdda5858efd92459bb8f4ad8')
 
