@@ -10,7 +10,7 @@ arch=("x86_64")
 url="http://lxqt.org"
 license=("GPL2")
 depends=("liblxqt")
-makedepends=("cmake")
+makedepends=("cmake" "qt5-tools")
 source=($url/downloads/lxqt/${pkgver}/${pkgname}-${pkgver}.tar.xz)
 sha256sums=('30c3a219034732c22d1bad29c24962157449006748939e07255fb4b866b72a83')
 
