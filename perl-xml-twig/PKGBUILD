@@ -21,11 +21,6 @@ build() {
   make
 }
 
-check() {
-  cd XML-Twig-${pkgver}
-#  make test
-}
-
 package() {
   cd XML-Twig-${pkgver}
   make DESTDIR="${pkgdir}" install
