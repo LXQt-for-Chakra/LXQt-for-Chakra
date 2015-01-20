@@ -10,11 +10,11 @@ arch=('any')
 url='http://lxqt.org/'
 license=('LGPL')
 groups=('lxqt')
-depends=('menu-cache' 'libfm' 'pcmanfm-qt' 'liblxqt' 'liblxqt-mount' 'lximage-qt' 'lxqt-about' 'lxqt-admin'
+depends=('pcmanfm-qt' 'lximage-qt' 'lxqt-about' 'lxqt-admin'
          'lxqt-config' 'lxqt-common' 'lxqt-globalkeys' 'lxqt-notificationd' 'lxqt-openssh-askpass' 'lxqt-panel' 
          'lxqt-policykit' 'lxqt-powermanagement' 'lxqt-qtplugin' 'lxqt-runner' 'lxqt-session')
 optdepends=('openbox: Official recommend windows manager'
-	    'obconf-qt-git: openbox configuration GUI (git version)'
+	    'obconf-qt: openbox configuration GUI'
 	    'juffed: Lightweight text editor, based on Qt4'
 	    'qterminal: Lightweight terminal based on Qt'
 	    'qps: Lightweight system monitor based on Qt')
