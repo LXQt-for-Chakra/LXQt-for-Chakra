@@ -3,7 +3,7 @@
 # Maintainer: Jerome Leclanche <jerome@leclan.ch>
 
 pkgname=libsysstat
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Library to query system statistics (net, resource usage, ...)"
 arch=("x86_64")
@@ -11,23 +11,19 @@ url="http://lxqt.org"
 license=("GPL2")
 depends=("qt5-base" "qt5-tools")
 makedepends=("cmake")
-source=($url/downloads/${pkgname}/${pkgver}/${pkgname}-${pkgver}.tar.xz)
-sha256sums=('f517c89f8e2abdc90f3f602db6cba89d8405a3d86782f77f663d784d0ecc70ad')
+source=(http://downloads.lxqt.org/${pkgname}/${pkgver}/${pkgname}-${pkgver}.tar.xz)
+sha256sums=('ab6405ac1c2e547ab07c03556b356a462caf40bfb8c885f3ff6b6df82f012718')
 
 build() {
-	cd "${srcdir}/${pkgname}"
+	cd "${srcdir}/${pkgname}-${pkgver}"
 	mkdir -p build
 	cd build
-	cmake ../$pkgname \
-            -DCMAKE_BUILD_TYPE=Release \
-            -DCMAKE_INSTALL_PREFIX=/usr \
-            -DLIB_INSTALL_DIR:PATH=/usr/lib \
-            -DUSE_QT5=true ..
+	cmake -DCMAKE_INSTALL_PREFIX=/usr -DLIB_INSTALL_DIR:PATH=/usr/lib ..
 	make
 }
 
 package() {
-	cd "${srcdir}/${pkgname}"
+	cd "${srcdir}/${pkgname}-${pkgver}"
 	cd build
 	make DESTDIR="${pkgdir}" install
 }

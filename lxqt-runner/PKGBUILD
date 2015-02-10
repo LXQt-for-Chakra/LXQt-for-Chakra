@@ -2,7 +2,7 @@
 # Contributor: Antonio Rojas
 
 pkgname=lxqt-runner
-pkgver=0.8.0
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="Launch applications quickly by typing commands"
 arch=('i686' 'x86_64')
@@ -11,19 +11,14 @@ license=('LGPL')
 groups=('lxqt')
 depends=('lxqt-globalkeys' 'qt5-script' 'menu-cache')
 makedepends=('cmake' 'qt5-tools')
-source=("http://lxqt.org/downloads/lxqt/$pkgver/$pkgname-$pkgver.tar.xz")
-md5sums=('95d8fb3041987f89cb5d570eebfb99c9')
+source=("http://downloads.lxqt.org/lxqt/$pkgver/$pkgname-$pkgver.tar.xz")
+md5sums=('f68f8b9876bc825a2f5c9d6e9621211a')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
 	mkdir -p build
 	cd build
-	cmake ../$pkgname-$pkgver \
-            -DCMAKE_BUILD_TYPE=Release \
-            -DCMAKE_INSTALL_PREFIX=/usr \
-            -DCMAKE_INSTALL_LIBDIR:PATH=/usr/lib \
-            -DLIB_INSTALL_DIR:PATH=/usr/lib \
-            -DUSE_QT5=true ..
+	cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR:PATH=/usr/lib -DLIB_INSTALL_DIR:PATH=/usr/lib ..
 	make
 }
 

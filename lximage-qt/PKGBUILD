@@ -4,7 +4,7 @@
 
 pkgname=lximage-qt
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The LXQt image viewer"
 arch=('x86_64')
 url="http://lxqt.org"
@@ -12,8 +12,8 @@ license=('GPL')
 conflicts=('lximage-qt-git')
 replace=('lximage-qt-git')
 depends=('pcmanfm-qt')
-makedepends=("cmake" "qt5-tools")
-source=($url/downloads/${pkgname}/${pkgver}/${pkgname}-${pkgver}.tar.xz)
+makedepends=("cmake" "qt5-x11extras")
+source=(http://downloads.lxqt.org/${pkgname}/${pkgver}/${pkgname}-${pkgver}.tar.xz)
 install=${pkgname}.install
 md5sums=('6ebd303f268fcef069e6f340583669be')
 

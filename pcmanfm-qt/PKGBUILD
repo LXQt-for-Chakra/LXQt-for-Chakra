@@ -3,25 +3,25 @@
 # Maintainer: Jerome Leclanche <jerome@leclan.ch>
 
 pkgname=pcmanfm-qt
-pkgver=0.8.0
-pkgrel=2
+pkgver=0.9.0
+pkgrel=1
 pkgdesc="The LXQt file manager, Qt port of PCManFM."
 arch=('x86_64')
 url="http://lxqt.org"
 license=('LGPL2.1')
 conflicts=('pcmanfm-qt-git')
 replace=('pcmanfm-qt-git')
-depends=('libfm' 'qt5-x11extras' 'desktop-file-utils')
-makedepends=('cmake' 'qt5-tools')
-source=($url/downloads/lxqt/${pkgver}/${pkgname}-${pkgver}.tar.xz)
+depends=("liblxqt" "libfm" "lxmenu-data" "gvfs-mtp" "qt5-tools" "qt5-x11extras")
+makedepends=('cmake')
+source=(http://downloads.lxqt.org/lxqt/${pkgver}/${pkgname}-${pkgver}.tar.xz)
 install=${pkgname}.install
-sha256sums=('63672fdf819d8a2c60b3ab21841a830702624d33565352af2850ef7cba9b5f16')
+sha256sums=('2df0f0a0c092f9ee6e7311255ab2aed66c8ea897b3399affb96732c46421e2df')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
 	mkdir -p build
 	cd build
-	cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR:PATH=/usr/lib -DLIB_INSTALL_DIR:PATH=/usr/lib -DUSE_QT5=true ..
+	cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR:PATH=/usr/lib -DLIB_INSTALL_DIR:PATH=/usr/lib ..
 	make
 }
 

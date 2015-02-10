@@ -3,22 +3,22 @@
 # Maintainer: Jerome Leclanche <jerome@leclan.ch>
 
 pkgname=lxqt-config
-pkgver=0.8.0
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="LXQt system configuration."
 arch=("x86_64")
 url="http://lxqt.org"
 license=("GPL2")
-depends=("liblxqt" "libxcursor" "xorg-xrandr")
-makedepends=("cmake" "qt5-tools")
-source=($url/downloads/lxqt/${pkgver}/${pkgname}-${pkgver}.tar.xz)
-sha256sums=('d2817df3c890038aca3e9efa2e2319df51825f47fdda5858efd92459bb8f4ad8')
+depends=("liblxqt" "libxcursor")
+makedepends=("cmake")
+source=(http://downloads.lxqt.org/lxqt/${pkgver}/${pkgname}-${pkgver}.tar.xz)
+sha256sums=('9d6b0d21846ac5d9c62c5806ce04383b92708ab7bd095b46d0ac9fbb3f84b913')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
 	mkdir -p build
 	cd build
-	cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR:PATH=/usr/lib -DLIB_INSTALL_DIR:PATH=/usr/lib -DUSE_QT5=true ..
+	cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR:PATH=/usr/lib -DLIB_INSTALL_DIR:PATH=/usr/lib ..
 	make
 }
 

@@ -3,7 +3,7 @@
 # Maintainer: Jerome Leclanche <jerome@leclan.ch>
 
 pkgname=liblxqt-mount
-pkgver=0.8.0
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="LXQt library used to manage removable devices."
 arch=("x86_64")
@@ -11,14 +11,14 @@ url="http://lxqt.org"
 license=("GPL2")
 depends=("liblxqt" "udisks2")
 makedepends=("cmake" "qt5-tools")
-source=($url/downloads/lxqt/${pkgver}/${pkgname}-${pkgver}.tar.xz)
-sha256sums=('f723432fc4b97e6b4c709d65f6a73586fabe835663aad090feda9b02439bad21')
+source=(http://downloads.lxqt.org/lxqt/${pkgver}/${pkgname}-${pkgver}.tar.xz)
+sha256sums=('c89ddce16a67831bf8975bc40f95729cb5069105b969f2c8abfb8ab0116dbf5d')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
 	mkdir -p build
 	cd build
-	cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR:PATH=/usr/lib -DLIB_INSTALL_DIR:PATH=/usr/lib -DUSE_QT5=true ..
+	cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR:PATH=/usr/lib -DLIB_INSTALL_DIR:PATH=/usr/lib ..
 	make
 }
 

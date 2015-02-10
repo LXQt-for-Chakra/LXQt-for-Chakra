@@ -3,27 +3,22 @@
 # Maintainer: Jerome Leclanche <jerome@leclan.ch>
 
 pkgname=lxqt-common
-pkgver=0.8.0
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="Common data to run a LXQt session."
 arch=("x86_64")
 url="http://lxqt.org"
-license=("LGPL")
+license=("GPL2")
 depends=("liblxqt")
 makedepends=("cmake" "qt5-tools")
-source=($url/downloads/lxqt/${pkgver}/${pkgname}-${pkgver}.tar.xz)
-sha256sums=('c1a4b38e296ee698186065a722fd11f02367d7a29ffe9cbc377a9157222d9019')
+source=(http://downloads.lxqt.org/lxqt/${pkgver}/${pkgname}-${pkgver}.tar.xz)
+sha256sums=('495e0015443c6e8564902059413d88e0c8cb632e2b7c0b2e519eb3cd77180b99')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
 	mkdir -p build
 	cd build
-	cmake ../$pkgname-$pkgver \
-            -DCMAKE_BUILD_TYPE=Release \
-            -DCMAKE_INSTALL_PREFIX=/usr \
-            -DCMAKE_INSTALL_LIBDIR:PATH=/usr/lib \
-            -DLIB_INSTALL_DIR:PATH=/usr/lib \
-            -DUSE_QT5=true ..
+	cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR:PATH=/usr/lib -DLIB_INSTALL_DIR:PATH=/usr/lib ..
 	make
 }
 

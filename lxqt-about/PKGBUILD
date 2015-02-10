@@ -3,22 +3,22 @@
 # Maintainer: Jerome Leclanche <jerome@leclan.ch>
 
 pkgname=lxqt-about
-pkgver=0.8.0
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="LXQt about dialog."
 arch=("x86_64")
 url="http://lxqt.org"
 license=("GPL2")
 depends=("liblxqt")
-makedepends=("cmake" "qt5-tools")
-source=($url/downloads/lxqt/${pkgver}/${pkgname}-${pkgver}.tar.xz)
-sha256sums=('30c3a219034732c22d1bad29c24962157449006748939e07255fb4b866b72a83')
+makedepends=("cmake")
+source=(http://downloads.lxqt.org/lxqt/${pkgver}/${pkgname}-${pkgver}.tar.xz)
+sha256sums=('6965eb5eba8acbd97cebd708da12f2aa8bbb3cf2c3fa211b5c00cc45fc48bf77')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
 	mkdir -p build
 	cd build
-	cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR:PATH=/usr/lib -DLIB_INSTALL_DIR:PATH=/usr/lib -DUSE_QT5=true ..
+	cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR:PATH=/usr/lib -DLIB_INSTALL_DIR:PATH=/usr/lib ..
 	make
 }
 
