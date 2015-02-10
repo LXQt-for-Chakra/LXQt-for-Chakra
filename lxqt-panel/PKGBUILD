@@ -9,11 +9,9 @@ pkgdesc="The LXQt desktop panel"
 arch=("x86_64")
 url="http://lxqt.org"
 license=("GPL2")
-depends=(
-	"icu" "liblxqt-mount" "libsysstat" "kwindowsystem" "kguiaddons"
+depends=("liblxqt-mount" "libsysstat" "kwindowsystem" "kguiaddons"
 	"lxqt-globalkeys" "menu-cache" "libxcomposite" "lxmenu-data"
-	"alsa-lib" "libpulse" "lm_sensors" "libstatgrab"
-)
+	"alsa-lib" "libpulse" "lm_sensors" "libstatgrab")
 makedepends=("cmake")
 source=(http://downloads.lxqt.org/lxqt/${pkgver}/${pkgname}-${pkgver}.tar.xz)
 sha256sums=('96b2c2f1b7de7605ac79f094936e6fcf8f0034342e11d84624a033f2450f6bf1')
