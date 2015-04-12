@@ -3,7 +3,7 @@
 # Maintainer: Jerome Leclanche <jerome@leclan.ch>
 
 pkgname=libqtxdg
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Library providing freedesktop.org specs implementations for Qt."
 arch=("x86_64")
@@ -12,12 +12,11 @@ license=("GPL2")
 depends=("qt5-base" "qt5-tools")
 makedepends=("cmake")
 source=(http://downloads.lxqt.org/$pkgname/$pkgver/$pkgname-$pkgver.tar.xz)
-sha256sums=('5c90989fcd13387cc8a7905a03e0b65f76aa28545cb9733625e1d88fd6ff4002')
+sha256sums=('88c9b01b56fea205226b53642833963e4f27471de3b90e93e9b650ca28d098d9')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
-	mkdir -p build
-	cd build
+	mkdir -p build && cd build
 	cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR:PATH=/usr/lib -DLIB_INSTALL_DIR:PATH=/usr/lib ..
 	make
 }
