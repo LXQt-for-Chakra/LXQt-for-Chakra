@@ -1,31 +1,29 @@
-# Maintainer: s8321414 <s8321414 at gmail.com>
+# Maintainer: s8321414 <s8321414@chakraos.org>
 # Arch Linux maintainers and contributors:
 # Maintainer: Jerome Leclanche <jerome@leclan.ch>
 
 pkgname=lxqt-panel
-pkgver=0.9.0
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="The LXQt desktop panel"
 arch=("x86_64")
 url="http://lxqt.org"
 license=("GPL2")
-depends=("liblxqt-mount" "libsysstat" "kwindowsystem" "kguiaddons"
-	"lxqt-globalkeys" "menu-cache" "libxcomposite" "lxmenu-data"
-	"alsa-lib" "libpulse" "lm_sensors" "libstatgrab")
-makedepends=("cmake")
+depends=("libdbusmenu-qt5" "libxcomposite" "lxmenu-data" "lxqt-common"
+	 "lxqt-globalkeys" "menu-cache" "solid" "libpulse" "libstatgrab"
+	 "libsysstat" "lm_sensors")
+makedepends=("cmake" "qt5-tools")
 source=(http://downloads.lxqt.org/lxqt/${pkgver}/${pkgname}-${pkgver}.tar.xz)
-sha256sums=('96b2c2f1b7de7605ac79f094936e6fcf8f0034342e11d84624a033f2450f6bf1')
+sha256sums=('df83db7789daecd358f074db2100d7b251c00e48aa3aa62957d5a657a4309d5e')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
-	mkdir -p build
-	cd build
-	cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR:PATH=/usr/lib -DLIB_INSTALL_DIR:PATH=/usr/lib ..
+	mkdir -p build && cd build
+	cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=/usr/lib ..
 	make
 }
 
 package() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
-	cd build
+	cd "${srcdir}/${pkgname}-${pkgver}/build"
 	make DESTDIR="${pkgdir}" install
 }

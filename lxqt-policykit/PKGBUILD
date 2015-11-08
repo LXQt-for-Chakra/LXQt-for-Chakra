@@ -1,29 +1,27 @@
-# Maintainer: s8321414 <s8321414 at gmail.com>
+# Maintainer: s8321414 <s8321414@chakraos.org>
 # Arch Linux maintainers and contributors:
 # Maintainer: Jerome Leclanche <jerome@leclan.ch>
 
 pkgname=lxqt-policykit
-pkgver=0.9.0
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="The LXQt policykit authentication agent"
 arch=("x86_64")
 url="http://lxqt.org"
-license=("GPL2")
+license=("LGPL2.1")
 depends=("liblxqt" "polkit-qt5")
-makedepends=("cmake")
+makedepends=("cmake" "qt5-tools")
 source=(http://downloads.lxqt.org/lxqt/${pkgver}/${pkgname}-${pkgver}.tar.xz)
-sha256sums=('6bed4b6859085f4330405f25b47beee9d183a37ae7c2ca6876c15b2a1c2cf549')
+sha256sums=('c8a1843d30697030ecdcf6d328351f954c0349633106d389e2d2e678176c28ce')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
-	mkdir -p build
-	cd build
-	cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR:PATH=/usr/lib -DLIB_INSTALL_DIR:PATH=/usr/lib -DUSE_QT5=true ..
+	mkdir -p build && cd build
+	cmake -DCMAKE_INSTALL_PREFIX=/usr ..
 	make
 }
 
 package() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
-	cd build
+	cd "${srcdir}/${pkgname}-${pkgver}/build"
 	make DESTDIR="${pkgdir}" install
 }

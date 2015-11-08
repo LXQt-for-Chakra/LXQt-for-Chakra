@@ -1,29 +1,27 @@
-# Maintainer: s8321414 <s8321414 at gmail.com>
+# Maintainer: s8321414 <s8321414@chakraos.org>
 # Arch Linux maintainers and contributors:
 # Maintainer: Jerome Leclanche <jerome@leclan.ch>
 
 pkgname=lxqt-config
-pkgver=0.9.0
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="LXQt system configuration."
 arch=("x86_64")
 url="http://lxqt.org"
-license=("GPL2")
-depends=("liblxqt" "libxcursor")
-makedepends=("cmake")
+license=("LGPL2.1")
+depends=("liblxqt" "libkscreen" "libxcursor" "qt5-svg")
+makedepends=("cmake" "qt5-tools")
 source=(http://downloads.lxqt.org/lxqt/${pkgver}/${pkgname}-${pkgver}.tar.xz)
-sha256sums=('9d6b0d21846ac5d9c62c5806ce04383b92708ab7bd095b46d0ac9fbb3f84b913')
+sha256sums=('4567be4653f2f1f9ff156126250a08d7b480f627fa1410484d49f65ba5dab9b4')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
-	mkdir -p build
-	cd build
-	cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR:PATH=/usr/lib -DLIB_INSTALL_DIR:PATH=/usr/lib ..
+	mkdir -p build && cd build
+	cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib ..
 	make
 }
 
 package() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
-	cd build
+	cd "${srcdir}/${pkgname}-${pkgver}/build"
 	make DESTDIR="${pkgdir}" install
 }

@@ -1,29 +1,27 @@
-# Maintainer: s8321414 <s8321414 at gmail.com>
+# Maintainer: s8321414 <s8321414@chakraos.org>
 # Arch Linux maintainers and contributors:
 # Maintainer: Jerome Leclanche <jerome@leclan.ch>
 
 pkgname=lxqt-common
-pkgver=0.9.1
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="Common data to run a LXQt session."
-arch=("x86_64")
+arch=("any")
 url="http://lxqt.org"
 license=("GPL2")
-depends=("liblxqt")
-makedepends=("cmake" "qt5-tools")
+depends=("qt5-svg" "hicolor-icon-theme" "xdg-utils")
+makedepends=("cmake" "liblxqt" "qt5-tools")
 source=(http://downloads.lxqt.org/lxqt/${pkgver}/${pkgname}-${pkgver}.tar.xz)
-sha256sums=('6e572cb10a1619dcfd51bdd33802a71d4556a55ece0bc781c1cb41d972e5734d')
+sha256sums=('7b12f2fe7a42f5ea0c9f596eeb87ca3c97cc0b706121ceede64480e8480ec9d1')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
-	mkdir -p build
-	cd build
-	cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR:PATH=/usr/lib -DLIB_INSTALL_DIR:PATH=/usr/lib ..
+	mkdir -p build && cd build
+	cmake -DCMAKE_INSTALL_PREFIX=/usr ..
 	make
 }
 
 package() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
-	cd build
+	cd "${srcdir}/${pkgname}-${pkgver}/build"
 	make DESTDIR="${pkgdir}" install
 }

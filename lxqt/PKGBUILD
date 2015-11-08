@@ -1,16 +1,16 @@
-# Maintainer: s8321414 <s8321414 at gmail.com>
+# Maintainer: s8321414 <s8321414@chakraos.org>
 # Arch Linux maintainers and contributors:
 # Contributor: Antonio Rojas
 
 pkgname=lxqt
-pkgver=0.9.0
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="Metapackage to install a full LXQt desktop"
 arch=('any')
 url='http://lxqt.org/'
 license=('LGPL')
 groups=('lxqt')
-depends=('pcmanfm-qt' 'lximage-qt' 'lxqt-about' 'lxqt-admin'
+depends=('menu-cache' 'libfm' 'pcmanfm-qt' 'liblxqt' 'lximage-qt' 'lxqt-about' 'lxqt-admin'
          'lxqt-config' 'lxqt-common' 'lxqt-globalkeys' 'lxqt-notificationd' 'lxqt-openssh-askpass' 'lxqt-panel' 
          'lxqt-policykit' 'lxqt-powermanagement' 'lxqt-qtplugin' 'lxqt-runner' 'lxqt-session')
 optdepends=('openbox: Official recommend windows manager'

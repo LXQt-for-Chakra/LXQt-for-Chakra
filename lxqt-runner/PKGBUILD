@@ -1,29 +1,27 @@
-# Maintainer: s8321414 <s8321414 at gmail.com>
+# Maintainer: s8321414 <s8321414@chakraos.org>
 # Contributor: Antonio Rojas
 
 pkgname=lxqt-runner
-pkgver=0.9.0
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="Launch applications quickly by typing commands"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='http://lxqt.org/'
 license=('LGPL')
 groups=('lxqt')
-depends=('lxqt-globalkeys' 'qt5-script' 'menu-cache')
-makedepends=('cmake' 'qt5-tools')
+depends=("lxqt-common" "lxqt-globalkeys" "menu-cache" "qt5-script")
+makedepends=("cmake" "qt5-tools")
 source=("http://downloads.lxqt.org/lxqt/$pkgver/$pkgname-$pkgver.tar.xz")
-md5sums=('f68f8b9876bc825a2f5c9d6e9621211a')
+sha256sums=('d02998b2b438cff94a458fb4510eb493d7c1a4205c20a50be977e099e5d6ee81')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
-	mkdir -p build
-	cd build
-	cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR:PATH=/usr/lib -DLIB_INSTALL_DIR:PATH=/usr/lib ..
+	mkdir -p build && cd build
+	cmake -DCMAKE_INSTALL_PREFIX=/usr ..
 	make
 }
 
 package() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
-	cd build
+	cd "${srcdir}/${pkgname}-${pkgver}/build"
 	make DESTDIR="${pkgdir}" install
 }
