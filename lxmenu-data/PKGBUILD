@@ -1,4 +1,4 @@
-# Maintainer: s8321414 <s8321414 at gmail.com>
+# Maintainer: s8321414 <s8321414@chakraos.org>
 # Arch Linux maintainers and contributors:
 # Maintainer: Angel Velasquez <angvp@archlinux.org>
 # Maintainer: Juergen Hoetzel <juergen@archlinux.org>
@@ -10,7 +10,6 @@ pkgdesc="freedesktop.org desktop menus for LXDE"
 arch=('x86_64')
 license=('GPL2')
 url="http://lxde.org/"
-groups=('lxde')
 source=("http://sourceforge.net/projects/lxde/files/lxmenu-data%20%28desktop%20menu%29/lxmenu-data%200.1.4/${pkgname}-${pkgver}.tar.xz/download")
 makedepends=('intltool')
 conflicts=('lxmenu-data-git')
