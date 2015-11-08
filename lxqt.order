@@ -1,0 +1,34 @@
+# Library first
+libqtxdg
+liblxqt
+lxqt-common
+#libfm
+#menu-cache
+#lxmenu-data
+libsysstat
+#libstatgrab
+#perl-text-iconv
+perl-xml-twig
+perl-net-dbus
+#system-tools-backends
+#liboobs
+
+# Then applications
+lxqt-sudo
+qtermwidget
+qterminal
+lxqt-session
+lxqt-globalkeys
+lxqt-runner
+lxqt-qtplugin
+lxqt-powermanagement
+lxqt-policykit
+lxqt-panel
+lxqt-openssh-askpass
+lxqt-notificationd
+lxqt-config
+lxqt-admin
+lxqt-about
+pcmanfm-qt
+#lximage-qt
+lxqt
