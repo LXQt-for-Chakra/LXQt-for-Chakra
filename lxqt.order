@@ -1,14 +1,3 @@
-# These are the building "groups" or "package lists"
-# (or stages"). Every group must be prefixed with
-# "_build_" followed by the repo name_branch
-# and finally a identifier like "support".
-#
-# You can create/delete/modify groups as you like,
-# the buildscripts will detect all changes like
-# new/deleted groups automatically and offer them
-# in their options
-#
-#_build_LXQt-for-Chakra_master="
 # Library first
 libqtxdg
 liblxqt
