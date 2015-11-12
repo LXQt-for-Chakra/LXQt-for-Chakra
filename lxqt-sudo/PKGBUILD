@@ -18,7 +18,7 @@ sha256sums=("3b65fb9dc7b3b866a5fb090b16839308a15998ee30dfb28fae3c33370728fa57")
 
 build() {
 	mkdir -p build && cd build
-	cmake -DCMAKE_INSTALL_PREFIX=/usr .. 
+	cmake "$srcdir/$pkgname-$pkgver" -DCMAKE_INSTALL_PREFIX=/usr 
 	make
 }
 
