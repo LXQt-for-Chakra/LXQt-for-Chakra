@@ -7,26 +7,24 @@
 
 pkgbase=libfm
 pkgname=(libfm libfm-extra)
-pkgver=1.2.3
-pkgrel=5
+pkgver=1.2.4
+pkgrel=1
 pkgdesc='Library for file management'
 url='http://pcmanfm.sourceforge.net/'
 arch=('x86_64')
 license=('GPL')
-depends=('menu-cache' 'desktop-file-utils' 'libexif' 'dbus-glib' 'shared-mime-info')
+depends=('menu-cache' 'desktop-file-utils' 'libexif' 'dbus-glib' 'shared-mime-info' 'vala')
 makedepends=('udisks' 'intltool')
 replaces=('lxshortcut')
 provides=('lxshortcut')
 conflicts=('lxshortcut')
 source=(http://downloads.sourceforge.net/pcmanfm/libfm-$pkgver.tar.xz)
-md5sums=('3ff38200701658f7e80e25ed395d92dd')
+md5sums=('74997d75e7e87dc73398746fd373bf52')
 
 build() {
   cd $pkgbase-$pkgver
   ./configure --prefix=/usr \
     --sysconfdir=/etc \
-    --enable-udisks \
-    --with-gnu-ld \
     --without-gtk
   make
 }
