@@ -3,7 +3,7 @@
 # Maintainer: Jerome Leclanche <jerome@leclan.ch>
 
 pkgname=lxqt-globalkeys
-pkgver=0.10.0
+pkgver=0.11.0
 pkgrel=1
 pkgdesc="LXQt daemon and library for global keyboard shortcuts registration."
 arch=("x86_64")
@@ -11,13 +11,14 @@ url="http://lxqt.org"
 license=("LGPL2.1")
 depends=("liblxqt")
 makedepends=("cmake" "qt5-tools")
-source=("http://downloads.lxqt.org/lxqt/${pkgver}/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('9a9d6a0299a26f91d391a601123e78e18cbe56ee6086cc27ccf800920e146e1a')
+source=("https://downloads.lxqt.org/lxqt/${pkgver}/${pkgname}-${pkgver}.tar.xz")
+sha256sums=('454ba7dd58180576032c1cfa21c576237b0aa0ea509cb47aadc21d1fbadc1354')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
 	mkdir -p build && cd build
-	cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib ..
+	cmake -DCMAKE_INSTALL_PREFIX=/usr \
+	      -DCMAKE_INSTALL_LIBDIR=lib ..
 	make
 }
 

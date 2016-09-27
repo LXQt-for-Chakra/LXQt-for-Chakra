@@ -2,7 +2,7 @@
 # Contributor: Antonio Rojas
 
 pkgname=lxqt-runner
-pkgver=0.10.0
+pkgver=0.11.0
 pkgrel=1
 pkgdesc="Launch applications quickly by typing commands"
 arch=('x86_64')
@@ -12,7 +12,7 @@ groups=('lxqt')
 depends=("lxqt-common" "lxqt-globalkeys" "menu-cache" "qt5-script")
 makedepends=("cmake" "qt5-tools")
 source=("http://downloads.lxqt.org/lxqt/$pkgver/$pkgname-$pkgver.tar.xz")
-sha256sums=('d02998b2b438cff94a458fb4510eb493d7c1a4205c20a50be977e099e5d6ee81')
+sha256sums=('ceb0139840d95448b63a8a30cc3b0d33687d596b9c23fbcf29b6608550711db1')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"

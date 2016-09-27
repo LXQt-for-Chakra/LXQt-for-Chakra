@@ -3,7 +3,7 @@
 # Maintainer: Jerome Leclanche <jerome@leclan.ch>
 
 pkgname=lxqt-about
-pkgver=0.10.0
+pkgver=0.11.0
 pkgrel=1
 pkgdesc="LXQt about dialog."
 arch=("x86_64")
@@ -12,7 +12,7 @@ license=("LGPL2.1")
 depends=("liblxqt")
 makedepends=("cmake" "qt5-tools")
 source=(http://downloads.lxqt.org/lxqt/${pkgver}/${pkgname}-${pkgver}.tar.xz)
-sha256sums=('d308f228d1cc72d2cc9acec608adc31cdf9182feded0e9ca8dd2691d227f28fa')
+sha256sums=('26bd91a1ca559353c2bcb82378918419b8e059a47956c2f89e533b3fac2881b6')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"

@@ -1,27 +1,27 @@
-# Maintainer: s8321414 <s8321414 at gmail.com>
+# Maintainer: s8321414 <s8321414@chakraos.org>
 # Arch Linux maintainers and contributors:
 # Maintainer: Jerome Leclanche <jerome@leclan.ch>
 
-pkgname=qtermwidget
-pkgver=0.7.0
+pkgname=libfm-qt
+pkgver=0.11.1
 pkgrel=1
-pkgdesc="A terminal widget for Qt"
+pkgdesc="Core library of PCManFM-Qt (Qt binding for libfm)"
 arch=("x86_64")
-url="https://github.com/qterminal/qtermwidget"
+groups=("lxqt")
+url="http://lxqt.org"
 license=("GPL2")
-depends=("qt5-base")
-makedepends=("cmake")
-conflicts=("qtermwidget-git")
+depends=("libfm" "liblxqt" "qt5-x11extras")
+makedepends=("cmake" "qt5-tools" "git")
 source=(https://downloads.lxqt.org/${pkgname}/${pkgver}/${pkgname}-${pkgver}.tar.xz)
-sha256sums=('413d20a6b8feaf14b8e1106d3b01156e85cb3c4ea0f43ff5c1d79b95cd989748')
+sha256sums=('69f3f2564471272a0ccc8f1958d8f4f520a5a9fad9a6b99bb29f17fab8480578')
 
 build() {
 	mkdir -p build
 	cd build
+
 	cmake "$srcdir/$pkgname-$pkgver" \
 		-DCMAKE_INSTALL_PREFIX=/usr \
-		-DCMAKE_INSTALL_LIBDIR:PATH=/usr/lib \
-		-DCMAKE_BUILD_TYPE=Release
+		-DCMAKE_INSTALL_LIBDIR=lib
 	make
 }
 

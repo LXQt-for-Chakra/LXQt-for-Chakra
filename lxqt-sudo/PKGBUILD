@@ -3,7 +3,7 @@
 # Maintainer: Jerome Leclanche <jerome@leclan.ch>
 
 pkgname=lxqt-sudo
-pkgver=0.10.0
+pkgver=0.11.0
 pkgrel=1
 pkgdesc="LXQt privilege program (lxsu)."
 arch=("x86_64")
@@ -13,7 +13,7 @@ license=("LGPL2.1")
 depends=("liblxqt")
 makedepends=("cmake" "qt5-tools")
 source=("https://downloads.lxqt.org/lxqt/$pkgver/$pkgname-$pkgver.tar.xz")
-sha256sums=("3b65fb9dc7b3b866a5fb090b16839308a15998ee30dfb28fae3c33370728fa57")
+sha256sums=('12666718f04ed508261c432789a608ba460b5cd641770708780d52400e848770')
 
 
 build() {

@@ -3,7 +3,7 @@
 # Maintainer: Jerome Leclanche <jerome@leclan.ch>
 
 pkgname=lxqt-session
-pkgver=0.10.0
+pkgver=0.11.0
 pkgrel=1
 pkgdesc="LXQt session"
 arch=("x86_64")
@@ -15,8 +15,8 @@ optdepends=(
 	"oxygen-icons: Alternative icon theme"
 	"sddm: The recommended display manager"
 )
-source=(http://downloads.lxqt.org/lxqt/${pkgver}/${pkgname}-${pkgver}.tar.xz)
-sha256sums=('2aedbeef904c11679199bfcdbf141880082c4bbcbcdad2b89b47d5b833fe26d4')
+source=(https://downloads.lxqt.org/lxqt/${pkgver}/${pkgname}-${pkgver}.tar.xz)
+sha256sums=('c03e8229ba53a80f4f8807299460ea052ae0916ea991dd1f48274280ef0d8b57')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"

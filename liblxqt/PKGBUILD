@@ -3,21 +3,22 @@
 # Maintainer: Jerome Leclanche <jerome@leclan.ch>
 
 pkgname=liblxqt
-pkgver=0.10.0
+pkgver=0.11.0
 pkgrel=1
 pkgdesc="Common base library for LXQt components."
 arch=("x86_64")
 url="http://lxqt.org"
 license=("GPL2")
-depends=("kwindowsystem" "libqtxdg")
+depends=("kwindowsystem" "libqtxdg" "libxss")
 makedepends=("cmake" "qt5-tools")
-source=(http://downloads.lxqt.org/lxqt/${pkgver}/${pkgname}-${pkgver}.tar.xz)
-sha256sums=('77a42a9ae79d0887bf09cba0c6aaf59ba71edb0bc807736384d1072254aace7c')
+source=(https://downloads.lxqt.org/lxqt/${pkgver}/${pkgname}-${pkgver}.tar.xz)
+sha256sums=('bc553bf53f3083886b5456a3f22e227f68ea945d8ee0dd31dd24f765bf879fe2')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
 	mkdir -p build && cd build
-	cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib ..
+	cmake -DCMAKE_INSTALL_PREFIX=/usr \
+	      -DCMAKE_INSTALL_LIBDIR=lib ..
 	make
 }
 

@@ -3,7 +3,7 @@
 # Maintainer: Jerome Leclanche <jerome@leclan.ch>
 
 pkgname=lxqt-openssh-askpass
-pkgver=0.10.0
+pkgver=0.11.0
 pkgrel=1
 pkgdesc="LXQt openssh password prompt"
 arch=("x86_64")
@@ -11,8 +11,8 @@ url="http://lxqt.org"
 license=("LGPL2.1")
 depends=("liblxqt")
 makedepends=("cmake" "qt5-tools")
-source=(http://downloads.lxqt.org/lxqt/${pkgver}/${pkgname}-${pkgver}.tar.xz)
-sha256sums=('fc4138fa071cf6e7a39cb0c069d8dbc31e409f5eaed87b65f7b5fe6241032283')
+source=(https://downloads.lxqt.org/lxqt/${pkgver}/${pkgname}-${pkgver}.tar.xz)
+sha256sums=('7eac52ceca73e0ccb16a517d78a80870fbb1c2d9edc33c6ad719ae35820f57ec')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"

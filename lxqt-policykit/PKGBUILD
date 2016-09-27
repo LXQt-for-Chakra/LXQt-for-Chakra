@@ -3,7 +3,7 @@
 # Maintainer: Jerome Leclanche <jerome@leclan.ch>
 
 pkgname=lxqt-policykit
-pkgver=0.10.0
+pkgver=0.11.0
 pkgrel=1
 pkgdesc="The LXQt policykit authentication agent"
 arch=("x86_64")
@@ -11,8 +11,8 @@ url="http://lxqt.org"
 license=("LGPL2.1")
 depends=("liblxqt" "polkit-qt5")
 makedepends=("cmake" "qt5-tools")
-source=(http://downloads.lxqt.org/lxqt/${pkgver}/${pkgname}-${pkgver}.tar.xz)
-sha256sums=('c8a1843d30697030ecdcf6d328351f954c0349633106d389e2d2e678176c28ce')
+source=(https://downloads.lxqt.org/lxqt/${pkgver}/${pkgname}-${pkgver}.tar.xz)
+sha256sums=('d67620385b5ebe3784edc08be7b627fab8748d7cdd870f5cb2405a06f72469fc')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"

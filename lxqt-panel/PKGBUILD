@@ -3,7 +3,7 @@
 # Maintainer: Jerome Leclanche <jerome@leclan.ch>
 
 pkgname=lxqt-panel
-pkgver=0.10.0
+pkgver=0.11.0
 pkgrel=1
 pkgdesc="The LXQt desktop panel"
 arch=("x86_64")
@@ -13,8 +13,8 @@ depends=("libdbusmenu-qt5" "libxcomposite" "lxmenu-data" "lxqt-common"
 	 "lxqt-globalkeys" "menu-cache" "solid" "libpulse" "libstatgrab"
 	 "libsysstat" "lm_sensors")
 makedepends=("cmake" "qt5-tools")
-source=(http://downloads.lxqt.org/lxqt/${pkgver}/${pkgname}-${pkgver}.tar.xz)
-sha256sums=('df83db7789daecd358f074db2100d7b251c00e48aa3aa62957d5a657a4309d5e')
+source=(https://downloads.lxqt.org/lxqt/${pkgver}/${pkgname}-${pkgver}.tar.xz)
+sha256sums=('18415624d862b9b269fd1f74b2b6a51776852babd057e701e5d5b48ce46e777c')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"

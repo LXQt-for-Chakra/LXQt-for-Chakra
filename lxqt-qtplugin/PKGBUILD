@@ -3,7 +3,7 @@
 # Maintainer: Jerome Leclanche <jerome@leclan.ch>
 
 pkgname=lxqt-qtplugin
-pkgver=0.10.0
+pkgver=0.11.0
 pkgrel=1
 pkgdesc="LXQt platform integration for Qt"
 arch=("x86_64")
@@ -11,8 +11,8 @@ url="http://lxqt.org"
 license=("LGPL2.1")
 depends=("libdbusmenu-qt5" "qt5-base")
 makedepends=("cmake" "liblxqt" "qt5-tools")
-source=(http://downloads.lxqt.org/lxqt/${pkgver}/${pkgname}-${pkgver}.tar.xz)
-sha256sums=('9de45e4463169ec294df62a56a9e10568fe035ad0a7c98901e72b03463690ad4')
+source=(https://downloads.lxqt.org/lxqt/${pkgver}/${pkgname}-${pkgver}.tar.xz)
+sha256sums=('c1fdaba78d139e3cfdfb783c60e4f84632ce296a7cf8d5444d60ca1d1e5dbf59')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"

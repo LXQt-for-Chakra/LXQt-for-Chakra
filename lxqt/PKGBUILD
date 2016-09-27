@@ -3,19 +3,18 @@
 # Contributor: Antonio Rojas
 
 pkgname=lxqt
-pkgver=0.10.0
+pkgver=0.11.0
 pkgrel=1
 pkgdesc="Metapackage to install a full LXQt desktop"
 arch=('any')
 url='http://lxqt.org/'
 license=('LGPL')
 groups=('lxqt')
-depends=('menu-cache' 'libfm' 'pcmanfm-qt' 'liblxqt' 'lximage-qt' 'lxqt-about' 'lxqt-admin'
+depends=('menu-cache' 'libfm' 'libfm-qt' 'pcmanfm-qt' 'liblxqt' 'lximage-qt' 'lxqt-about' 'lxqt-admin'
          'lxqt-config' 'lxqt-common' 'lxqt-globalkeys' 'lxqt-notificationd' 'lxqt-openssh-askpass' 'lxqt-panel' 
-         'lxqt-policykit' 'lxqt-powermanagement' 'lxqt-qtplugin' 'lxqt-runner' 'lxqt-session')
-optdepends=('openbox: Official recommend windows manager'
-	    'obconf-qt-git: openbox configuration GUI (git version)'
-	    'juffed: Lightweight text editor, based on Qt4'
+         'lxqt-policykit' 'lxqt-powermanagement' 'lxqt-qtplugin' 'lxqt-runner' 'lxqt-session' 'openbox' 'obconf-qt' 
+	 'pavucontrol-qt')
+optdepends=('juffed: Lightweight text editor, based on Qt'
 	    'qterminal: Lightweight terminal based on Qt'
 	    'qps: Lightweight system monitor based on Qt')
 source=()

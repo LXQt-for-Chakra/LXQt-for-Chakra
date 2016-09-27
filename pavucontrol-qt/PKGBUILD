@@ -1,0 +1,29 @@
+# Maintainer: s8321414 <s8321414@chakraos.org>
+# Arch Linux maintainers and contributors:
+# Maintainer: Jerome Leclanche <jerome@leclan.ch>
+
+pkgname=pavucontrol-qt
+pkgver=0.1.0
+pkgrel=1
+pkgdesc="A Pulseaudio mixer in Qt (port of pavucontrol)"
+arch=("i686" "x86_64")
+url="http://lxqt.org"
+license=("GPL2")
+depends=("pulseaudio" "liblxqt" "xdg-user-dirs")
+makedepends=("cmake" "qt5-tools")
+source=(https://downloads.lxqt.org/${pkgname}/${pkgver}/${pkgname}-${pkgver}.tar.xz)
+sha256sums=('f1021248f9985e46e1b8d026c3c2df8e066c129ddf76b124c54d07cad3db7f74')
+
+build() {
+	mkdir -p build && cd build
+
+	cmake "$srcdir/$pkgname-$pkgver" \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_INSTALL_LIBDIR=lib
+	make
+}
+
+package() {
+	cd build
+	make DESTDIR="$pkgdir" install
+}

@@ -1,6 +1,7 @@
 # Library first
 libqtxdg
 liblxqt
+libfm-qt
 lxqt-common
 #libfm
 #menu-cache
@@ -29,6 +30,7 @@ lxqt-notificationd
 lxqt-config
 lxqt-admin
 lxqt-about
+pavucontrol-qt
 pcmanfm-qt
-#lximage-qt
+lximage-qt
 lxqt
