@@ -7,7 +7,7 @@
 
 pkgbase=libfm
 pkgname=(libfm libfm-extra)
-pkgver=1.2.4
+pkgver=1.2.5
 pkgrel=1
 pkgdesc='Library for file management'
 url='http://pcmanfm.sourceforge.net/'
@@ -19,7 +19,7 @@ replaces=('lxshortcut')
 provides=('lxshortcut')
 conflicts=('lxshortcut')
 source=(http://downloads.sourceforge.net/pcmanfm/libfm-$pkgver.tar.xz)
-md5sums=('74997d75e7e87dc73398746fd373bf52')
+md5sums=('a1ba9ae5e920f38b647dd511edd6c807')
 
 build() {
   cd $pkgbase-$pkgver
