@@ -5,7 +5,7 @@
 # Contributor: Juergen Hoetzel <juergen@archlinux.org>
 
 pkgname=menu-cache
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc='Caching mechanism for freedesktop.org compliant menus'
 arch=('x86_64')
@@ -15,7 +15,7 @@ depends=('libfm-extra')
 conflicts=('menu-cache-git')
 replace=('menu-cache-git')
 source=(http://downloads.sourceforge.net/lxde/$pkgname/$pkgname-$pkgver.tar.xz)
-md5sums=('a856ba860b16fdc8c69ee784bc4ade36')
+md5sums=('8dde7a3f5bd9798d0129d1979a5d7640')
 
 build() {
   cd ${pkgname}-${pkgver}
