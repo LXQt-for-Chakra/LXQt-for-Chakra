@@ -3,8 +3,8 @@ libqtxdg
 liblxqt
 libfm-qt
 lxqt-common
-#libfm
-#menu-cache
+libfm
+menu-cache
 #lxmenu-data
 libsysstat
 #libstatgrab
